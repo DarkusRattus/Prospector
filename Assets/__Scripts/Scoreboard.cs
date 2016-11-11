@@ -4,9 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 // The Scorebord class manages showing the score to the player
-public class ScoreBoard : MonoBehaviour {
+public class Scoreboard : MonoBehaviour {
 
-    public static ScoreBoard S; // The singleton for Scoreboard
+    public static Scoreboard S; // The singleton for Scoreboard
 
     public GameObject prefabFloatingScore;
 
