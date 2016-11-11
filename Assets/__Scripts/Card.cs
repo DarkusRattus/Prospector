@@ -32,7 +32,7 @@ public class Card : MonoBehaviour {
 			back.SetActive(!value);
 		}
 	}
-    
+
     // If spriteRenderers is not yet defined, this function defines it
     public void PopulateSpriteRenderers()
     {
