@@ -118,6 +118,7 @@ public class Prospector : MonoBehaviour {
                 break;
             case CardState.tableau:
                 // Clicking a card in the tableau will check if it's a valid play
+
                 break;
         }
     }
@@ -141,7 +142,7 @@ public class Prospector : MonoBehaviour {
     }
 
     // Make c the new target card
-    void MakeToTarget(CardProspector cd)
+    void MoveToTarget(CardProspector cd)
     {
         // If there is currently a target card, move it to discardPile
         if (target != null) MoveToDiscard(target);
@@ -171,8 +172,8 @@ public class Prospector : MonoBehaviour {
             // Position it correctly with the layout.drawPile.stagger
             Vector2 dpStagger = layout.drawPile.stagger;
             cd.transform.localPosition = new Vector3(
-                layout.multiplier.x * [layout.drawPile.x + i * dpStagger.x],
-                layout.multiplier.y * [layout.drawPile.y + i * dpStagger.y],
+                layout.multiplier.x * (layout.drawPile.x + i * dpStagger.x),
+                layout.multiplier.y * (layout.drawPile.y + i * dpStagger.y),
                 -layout.drawPile.layerID + 0.1f * i);
             cd.faceUp = false; // Make them all face down
             cd.state = CardState.drawpile;
