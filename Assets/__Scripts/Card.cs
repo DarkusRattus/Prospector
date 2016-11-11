@@ -24,7 +24,7 @@ public class Card : MonoBehaviour {
     }
 
 	// property
-	public bool faceUP {
+	public bool faceUp {
 		get {
 			return (!back.activeSelf);
 		}		
@@ -88,7 +88,14 @@ public class Card : MonoBehaviour {
             }
         }
     }
-    	
+
+
+    // Virtual methods can be overridden by subclass methods with the same name
+    virtual public void OnMouseUpAsButton()
+    {
+        print(name); // When clicked, this outputs the Card name
+    }
+
 } // class Card
 
 [System.Serializable]
