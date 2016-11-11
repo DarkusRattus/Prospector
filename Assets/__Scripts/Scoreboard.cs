@@ -29,7 +29,7 @@ public class ScoreBoard : MonoBehaviour {
         }
     }
 
-    // The scoreString property also sets the GUIText.text
+    // The scoreString property also sets the UI Text text
     public string scoreString
     {
         get
