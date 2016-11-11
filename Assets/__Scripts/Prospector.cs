@@ -57,9 +57,9 @@ public class Prospector : MonoBehaviour {
                 // If the card has the same ID, return it
                 return tCP;
             }
-            // If it's not found, return null
-            return (null);
         }
+        // If it's not found, return null
+        return (null);
     }
 
     // LayoutGame() positions the initial tableau of cards, a.k.a. the "mine"
