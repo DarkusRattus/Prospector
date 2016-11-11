@@ -46,6 +46,22 @@ public class Prospector : MonoBehaviour {
         return (cd);                     // And return it
     }
 
+    // Convert from the layoutID int to the CardProspector with that ID
+    CardProspector FindCardByLayoutID(int layoutID)
+    {
+        foreach(CardProspector tCP in tableau)
+        {
+            // Search through all cards in the tableau List<>
+            if(tCP.layoutID == layoutID)
+            {
+                // If the card has the same ID, return it
+                return tCP;
+            }
+            // If it's not found, return null
+            return (null);
+        }
+    }
+
     // LayoutGame() positions the initial tableau of cards, a.k.a. the "mine"
     void LayoutGame()
     {
@@ -80,6 +96,16 @@ public class Prospector : MonoBehaviour {
             cp.SetSortingLayerName(tSD.layerName);
 
             tableau.Add(cp); // Add this CardProspector to the List<> tableau
+        }
+
+        // Set which cards are hiding others
+        foreach(CardProspector tCP in tableau)
+        {
+            foreach(int hid in tCP.slotDef.hiddenBy)
+            {
+                cp = FindCardByLayoutID(hid);
+                tCP.hiddenBy.Add(cp);
+            }
         }
 
         // Set up the initial target card
@@ -133,6 +159,7 @@ public class Prospector : MonoBehaviour {
                 // Yay! It's a valid card.
                 tableau.Remove(cd); // Remove it from the tableau List
                 MoveToTarget(cd); // Make it the target card
+                SetTableauFaces(); // Update tableau card face-ups
                 break;
         }
     }
@@ -211,4 +238,21 @@ public class Prospector : MonoBehaviour {
         return (false);
     }
 
+    // This turns cards in the Mine face-up or face-down
+    void SetTableauFaces()
+    {
+        foreach(CardProspector cd in tableau)
+        {
+            bool fup = true; // Assume the card will be face-up
+            foreach (CardProspector cover in cd.hiddenBy)
+            {
+                // If either of the covering cards are in the tableau
+                if(cover.state == CardState.tableau)
+                {
+                    fup = false; // then this card is face-down
+                }
+            }
+            cd.faceUp = fup; // Set the value on the card
+        }
+    }
 }
