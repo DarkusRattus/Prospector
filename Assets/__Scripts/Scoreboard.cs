@@ -4,7 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 // The Scorebord class manages showing the score to the player
-public class Scoreboard : MonoBehaviour {
+public class Scoreboard : MonoBehaviour
+{
 
     public static Scoreboard S; // The singleton for Scoreboard
 
@@ -14,12 +15,6 @@ public class Scoreboard : MonoBehaviour {
     [SerializeField]
     private int _score = 0;
     public string _scoreString;
-    public Text textRef;
-
-    void Start()
-    {
-        textRef = GetComponent<Text>();
-    }
 
     // The score property also sets the scoreString
     public int score
@@ -35,7 +30,7 @@ public class Scoreboard : MonoBehaviour {
         }
     }
 
-    // The scoreString property also sets the GUIText.text
+    // The scoreString property also sets the UI Text text
     public string scoreString
     {
         get
@@ -43,9 +38,9 @@ public class Scoreboard : MonoBehaviour {
             return (_scoreString);
         }
         set
-        { 
+        {
             _scoreString = value;
-            textRef.text = _scoreString;
+            GetComponent<Text>().text = _scoreString;
         }
     }
 
@@ -53,8 +48,8 @@ public class Scoreboard : MonoBehaviour {
     {
         S = this;
     }
-    
-	// When called by SendMessage, this adds the fs.score to this.score
+
+    // When called by SendMessage, this adds the fs.score to this.score
     public void FSCallback(FloatingScore fs)
     {
         score += fs.score;
@@ -63,7 +58,7 @@ public class Scoreboard : MonoBehaviour {
     // This will Instantiate a new FloatingScore GameObject and initiate it
     // It also returns a pointer to the FloatingScore created so that the 
     // ...calling function can do more with it (like set fontSizes, etc.)
-    public FloatingScore CreateFloatingScore (int amt, List<Vector3> pts)
+    public FloatingScore CreateFloatingScore(int amt, List<Vector3> pts)
     {
         GameObject go = Instantiate(prefabFloatingScore) as GameObject;
         FloatingScore fs = go.GetComponent<FloatingScore>();
