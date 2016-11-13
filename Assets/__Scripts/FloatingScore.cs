@@ -12,19 +12,14 @@ public enum FSState
     post
 }
 
-public class FloatingScore : MonoBehaviour {
+public class FloatingScore : MonoBehaviour
+{
 
     public FSState state = FSState.idle;
     [SerializeField]
     private int _score = 0; // The score field
     public string scoreString;
-    public Text textRef;
 
-    void Start()
-    {
-        textRef = GetComponent<Text>();
-    }
-    
     // The score property also sets scoreString when set
     public int score
     {
@@ -36,8 +31,7 @@ public class FloatingScore : MonoBehaviour {
         {
             _score = value;
             scoreString = Utils.AddCommasToNumber(_score);
-            textRef = GetComponent<Text>();
-            textRef.text = scoreString;
+            GetComponent<Text>().text = scoreString;
         }
     }
 
@@ -75,9 +69,10 @@ public class FloatingScore : MonoBehaviour {
         // When this callback is called by SendMessage, add the score from the calling FloatingScore
         score += fs.score;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         // If this is not moving, just return
         if (state == FSState.idle) return;
 
@@ -119,12 +114,12 @@ public class FloatingScore : MonoBehaviour {
             // Use Bezier curve to move this to the right point
             Vector3 pos = Utils.Bezier(uC, bezierPts);
             transform.position = pos;
-            if(fontSizes != null && fontSizes.Count > 0)
+            if (fontSizes != null && fontSizes.Count > 0)
             {
                 // If fontSizes has values in it, then adjust the fontSizes of this UI Text
                 int size = Mathf.RoundToInt(Utils.Bezier(uC, fontSizes));
-                textRef.fontSize = size;
+                GetComponent<Text>().fontSize = size;
             }
         }
-	}
+    }
 }

@@ -250,10 +250,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7d7d9d9d58522f4cb96693ace07ad24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fsPosMid: {x: 0.5, y: 0.9, z: 0}
-  fsPosRun: {x: 0.5, y: 0.75, z: 0}
-  fsPosMid2: {x: 0.5, y: 0.5, z: 0}
-  fsPosEnd: {x: 1, y: 0.65, z: 0}
   deck: {fileID: 0}
   deckXML: {fileID: 4900000, guid: c76312a0fb08948699e1abf935e4a957, type: 3}
   layout: {fileID: 0}
@@ -269,7 +265,6 @@ MonoBehaviour:
   chain: 0
   scoreRun: 0
   score: 0
-  fsRun: {fileID: 0}
 --- !u!114 &827460516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,4 +552,4 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+m_RootOrder: 2
