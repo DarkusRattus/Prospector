@@ -18,7 +18,13 @@ public class FloatingScore : MonoBehaviour {
     [SerializeField]
     private int _score = 0; // The score field
     public string scoreString;
+    public Text textRef;
 
+    void Start()
+    {
+        textRef = GetComponent<Text>();
+    }
+    
     // The score property also sets scoreString when set
     public int score
     {
@@ -30,7 +36,8 @@ public class FloatingScore : MonoBehaviour {
         {
             _score = value;
             scoreString = Utils.AddCommasToNumber(_score);
-            GetComponent<Text>().text = scoreString;
+            textRef = GetComponent<Text>();
+            textRef.text = scoreString;
         }
     }
 
@@ -116,7 +123,7 @@ public class FloatingScore : MonoBehaviour {
             {
                 // If fontSizes has values in it, then adjust the fontSizes of this UI Text
                 int size = Mathf.RoundToInt(Utils.Bezier(uC, fontSizes));
-                GetComponent<Text>().fontSize = size;
+                textRef.fontSize = size;
             }
         }
 	}

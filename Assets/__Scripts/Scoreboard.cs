@@ -14,6 +14,12 @@ public class Scoreboard : MonoBehaviour {
     [SerializeField]
     private int _score = 0;
     public string _scoreString;
+    public Text textRef;
+
+    void Start()
+    {
+        textRef = GetComponent<Text>();
+    }
 
     // The score property also sets the scoreString
     public int score
@@ -37,9 +43,9 @@ public class Scoreboard : MonoBehaviour {
             return (_scoreString);
         }
         set
-        {
+        { 
             _scoreString = value;
-            GetComponent<Text>().text = _scoreString;
+            textRef.text = _scoreString;
         }
     }
 
