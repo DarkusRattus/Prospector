@@ -61,6 +61,7 @@ public class Scoreboard : MonoBehaviour
     public FloatingScore CreateFloatingScore(int amt, List<Vector3> pts)
     {
         GameObject go = Instantiate(prefabFloatingScore) as GameObject;
+        go.transform.SetParent(GameObject.Find("UI_Canvas").transform, false);
         FloatingScore fs = go.GetComponent<FloatingScore>();
         fs.score = amt;
         fs.reportFinishTo = this.gameObject; // Set fs to call back to this

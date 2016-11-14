@@ -45,6 +45,8 @@ public class Prospector : MonoBehaviour {
     public int score = 0;
     public FloatingScore fsRun;
 
+
+
     void Awake() {
         S = this; // Set up a Singleton for Prospector
         // Check for a high score in PlayerPrefs

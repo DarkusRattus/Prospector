@@ -21,7 +21,7 @@ GameObject:
   - 224: {fileID: 224000012802650512}
   - 222: {fileID: 222000010053961350}
   - 114: {fileID: 114000012248780158}
-  - 114: {fileID: 114000011909871620}
+  - 114: {fileID: 114000010825745412}
   m_Layer: 5
   m_Name: PrefabFloatingScore
   m_TagString: Untagged
@@ -29,7 +29,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114000011909871620
+--- !u!114 &114000010825745412
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -37,7 +37,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000010401726974}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 318fa68111a629a47878ee86e2bf0d09, type: 3}
+  m_Script: {fileID: 11500000, guid: c025868bdc1d83a4183e822a75db9049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
