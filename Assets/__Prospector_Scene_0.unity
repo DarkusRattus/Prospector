@@ -122,7 +122,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 1, y: -136}
+  m_AnchoredPosition: {x: 1, y: -20}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &376966511
@@ -329,6 +329,8 @@ MonoBehaviour:
   fsPosRun: {x: 0.5, y: 0.75, z: 0}
   fsPosMid2: {x: 0.5, y: 0.5, z: 0}
   fsPosEnd: {x: 1, y: 0.65, z: 0}
+  GTGameOver: {fileID: 0}
+  GTRoundResult: {fileID: 0}
   deck: {fileID: 0}
   deckXML: {fileID: 4900000, guid: c76312a0fb08948699e1abf935e4a957, type: 3}
   layout: {fileID: 0}
@@ -514,9 +516,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 902967939}
   m_RootOrder: 0
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -84, y: 130}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 84, y: -13}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1094817214
@@ -540,18 +542,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 28
+    m_FontSize: 24
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 'Score: 0'
 --- !u!222 &1094817215
 CanvasRenderer:
   m_ObjectHideFlags: 0
