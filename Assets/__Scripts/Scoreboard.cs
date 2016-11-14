@@ -41,6 +41,7 @@ public class Scoreboard : MonoBehaviour
         {
             _scoreString = value;
             GetComponent<Text>().text = _scoreString;
+            // GetComponent<Text>().text = _scoreString;
         }
     }
 
