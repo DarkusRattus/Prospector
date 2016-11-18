@@ -12,6 +12,7 @@ public enum PlayerType
 // The individual Player of the game
 // Note: The Player does NOT extend MonoBehavior (or any other class)
 
+[System.Serializable]
 public class Player {
 
     public PlayerType type = PlayerType.ai;
@@ -28,6 +29,7 @@ public class Player {
 
         // Add the card to the hand
         hand.Add(eCB);
+        FanHand();
         return (eCB);
     }
 
@@ -35,6 +37,13 @@ public class Player {
     public CardBartok RemoveCard(CardBartok cb)
     {
         hand.Remove(cb);
+        FanHand();
         return (cb);
+    }
+
+    public void FanHand()
+    {
+        // startRot is the rotation about Z of the first card
+        //float startRot
     }
 }

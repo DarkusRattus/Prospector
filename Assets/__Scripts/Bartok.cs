@@ -130,6 +130,5 @@ public class Bartok : MonoBehaviour
         {
             players[3].AddCard(Draw());
         }
-
     }
 }
