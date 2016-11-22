@@ -44,6 +44,54 @@ public class Player {
     public void FanHand()
     {
         // startRot is the rotation about Z of the first card
-        //float startRot
+        float startRot = 0;
+        startRot = handBSlotDef.rot;
+        if(hand.Count > 1)
+        {
+            startRot += Bartok.S.handFanDegrees * (hand.Count - 1) / 2;
+        }
+        // Then each card is rotated handFanDegrees from that to fan the cards
+
+        // Move all the cards to their new positions
+        Vector3 pos;
+        float rot;
+        Quaternion rotQ;
+        for(int i = 0; i < hand.Count; i++)
+        {
+            rot = startRot - Bartok.S.handFanDegrees * i; // Rot about the Z axis
+            // ^ Also adds the rotations of the different players' hands
+            rotQ = Quaternion.Euler(0, 0, rot);
+            // ^ Quaternion representing the same rotation as rot
+
+            // pos is a V3 half a card height above [0,0,0] (i.e. [0,1.75,0])
+            pos = Vector3.up * CardBartok.CARD_HEIGHT;
+
+            // Multiplying a Quaternion by a Vector3 rotates that Vector3 by the rotation stored in the Quaternion.
+            // The result gives us a vector above [0,0,0] that has been rotated by rot degrees
+            pos = rotQ * pos;
+
+            // Add the base position of the player's hand 
+            // (which will be at the bottom-center of the fan of the cards)
+            pos += handBSlotDef.pos;
+            // This staggers the cards in the Z direction, which isn't visible,
+            // but which does keep their colliders from overlapping
+            pos.z = -0.5f * i;
+
+            // Set the localPosition and rotation of the ith card in the hand
+            hand[i].transform.localPosition = pos;
+            hand[i].transform.rotation = rotQ;
+            hand[i].state = CBState.hand;
+
+            // This uses a comparison operator to return a true or false bool
+            // So, if (type == PlayerType.human), hand[i].faceUp is set to true
+            hand[i].faceUp = (type == PlayerType.human);
+
+            // Set the SortOrder of the cards so that they overlap properly
+            hand[i].SetSortOrder(i * 4);
+
+
+
+
+        }
     }
 }
