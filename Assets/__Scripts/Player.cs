@@ -29,6 +29,23 @@ public class Player {
 
         // Add the card to the hand
         hand.Add(eCB);
+
+        // Sort the cards by rank using LINQ if this is a human
+        if(type == PlayerType.human)
+        {
+            CardBartok[] cards = hand.ToArray(); // Copy hand to a new array
+
+            // Below is the LINQ call that works on the array of CardBartoks
+            // It is similar to doing a foreach(CardBartok cd in cards) and sorting them by rank
+            // It then returns a sorted array
+            cards = cards.OrderBy(cd => cd.rank).ToArray();
+
+            // Convert the array CardBartok[] back to a List<CardBartok>
+            hand = new List<CardBartok>(cards);
+            // Note: LINQ operations can be a bit slow - like a couple of milliseconds
+            // But since we're only doing it once every turn, it isn't a problem
+        }
+
         FanHand();
         return (eCB);
     }
@@ -88,10 +105,6 @@ public class Player {
 
             // Set the SortOrder of the cards so that they overlap properly
             hand[i].SetSortOrder(i * 4);
-
-
-
-
         }
     }
 }
