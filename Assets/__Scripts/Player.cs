@@ -93,11 +93,16 @@ public class Player {
             // This staggers the cards in the Z direction, which isn't visible,
             // but which does keep their colliders from overlapping
             pos.z = -0.5f * i;
-
+            
             // Set the localPosition and rotation of the ith card in the hand
+            hand[i].MoveTo(pos, rotQ); // To tell CardBartok to interpolate
+            hand[i].state = CBState.toHand;
+            
+            /* OLD CODE LOLOLOLOL
             hand[i].transform.localPosition = pos;
             hand[i].transform.rotation = rotQ;
             hand[i].state = CBState.hand;
+            */
 
             // This uses a comparison operator to return a true or false bool
             // So, if (type == PlayerType.human), hand[i].faceUp is set to true
