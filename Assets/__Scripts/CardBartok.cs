@@ -35,6 +35,12 @@ public class CardBartok : Card {
 
     // When the card is done moving, it will call reportFinishTo.SendMessage()
     public GameObject reportFinishTo = null;
+    public Player callbackPlayer = null;
+
+    void Awake()
+    {
+        callbackPlayer = null; // Paranoid
+    }
 
     // MoveTo tells the card to interpolate to a new position and rotation
     public void MoveTo(Vector3 ePos, Quaternion eRot)
@@ -109,6 +115,12 @@ public class CardBartok : Card {
                         // After calling SendMessage(), reportFinishTo must be set to null so that the card
                         //  doesn't continue to report to the same GameObject every subsequent time it moves 
                         reportFinishTo = null;
+                    }
+                    else if (callbackPlayer != null)
+                    {
+                        // If there's a callback Player, then call CBCallback directly on the Player
+                        callbackPlayer.CBCallback(this);
+                        callbackPlayer = null;
                     }
                     else // If there is nothing to callback
                     {
